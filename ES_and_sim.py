@@ -21,14 +21,16 @@ if len(results) > 0:
             max_sim_q = result['_source']['content'].strip()
 
     # 输出结果
-    print('qusetion: ' + qusetion)
     print('=' * 20 + ' ElasticSearch Results ' + '=' * 20)
     for i, result in enumerate(results):
-        print(str(i) + '. q:' + result['_source']['content'].strip() + ' score: ' + result['_score'])
+        print(str(i) + '. q:' + result['_source']['content'].strip() + ' score: ' + str(result['_score']))
 
+    print('\n')
     print('=' * 20 + ' Bert Results ' + '=' * 20)
     for item in rs_list:
         print(item)
 
+    print('\n')
     print('=' * 20 + ' Finally Results ' + '=' * 20)
+    print('qusetion: ' + qusetion)
     print(str(index) + '.max_sim_q: ' + max_sim_q + ' max_score: ' + str(score))
