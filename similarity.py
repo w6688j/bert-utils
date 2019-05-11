@@ -10,8 +10,7 @@ import tokenization
 import modeling
 import optimization
 
-
-# os.environ['CUDA_VISIBLE_DEVICES'] = '1'
+os.environ['CUDA_VISIBLE_DEVICES'] = '0'
 
 
 class InputExample(object):
@@ -668,6 +667,12 @@ if __name__ == '__main__':
     sim.train()
     sim.set_mode(tf.estimator.ModeKeys.EVAL)
     sim.eval()
+    predict = sim.predict('2008年人口小于1亿的省有哪些?', '比上海人口多的省有哪些?')
+    print(f'similarity：{predict[0][1]}')
+    predict = sim.predict('2008年人口小于1亿的省有哪些?', '1986年人口超过1亿的有哪些省?')
+    print(f'similarity：{predict[0][1]}')
+    predict = sim.predict('2008年人口小于1亿的省有哪些?', '比上海人口多的省有哪些?')
+    print(f'similarity：{predict[0][1]}')
     # sim.set_mode(tf.estimator.ModeKeys.PREDICT)
     # while True:
     #     sentence1 = input('sentence1: ')
