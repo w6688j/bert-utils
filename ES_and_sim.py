@@ -24,7 +24,7 @@ if len(results) > 0:
     print('qusetion: ' + qusetion)
     print('=' * 20 + ' ElasticSearch Results ' + '=' * 20)
     for i, result in enumerate(results):
-        print(str(i) + '.' + result['_source']['content'].strip())
+        print(str(i) + '. q:' + result['_source']['content'].strip() + ' score: ' + result['_score'])
 
     print('=' * 20 + ' Bert Results ' + '=' * 20)
     for item in rs_list:
