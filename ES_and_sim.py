@@ -43,19 +43,13 @@ class SimQuestion():
 
 
 if __name__ == '__main__':
-    list = []
     with open('data/question500.txt', 'r', encoding='utf-8') as f:
-        for line in f:
-            line_st = line.strip()
-            SimQ = SimQuestion(line_st)
-            sim_question = SimQ.getSimQuestion()
-            new_line = line_st + '\t' + sim_question
-            list.append(new_line)
-            del SimQ
-            print(new_line)
-
-    with open('output/sim_qustion500.txt', 'a+', encoding='utf-8') as fb:
-        for sim_question in list:
-            if sim_question is not None:
-                fb.write(sim_question + '\n')
-                fb.flush()
+        with open('output/sim_qustion500.txt', 'a+', encoding='utf-8') as fb:
+            for line in f:
+                line_st = line.strip()
+                SimQ = SimQuestion(line_st)
+                sim_question = SimQ.getSimQuestion()
+                if sim_question is not None:
+                    fb.write(line_st + '\t' + sim_question + '\n')
+                    fb.flush()
+                del SimQ
